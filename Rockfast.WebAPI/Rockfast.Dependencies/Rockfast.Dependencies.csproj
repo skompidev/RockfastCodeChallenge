@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Rockfast.ApiDatabase\Rockfast.ApiDatabase.csproj" />
+    <ProjectReference Include="..\Rockfast.Infrastructure\Rockfast.Infrastructure.csproj" />
     <ProjectReference Include="..\Rockfast.ServiceInterfaces\Rockfast.ServiceInterfaces.csproj" />
   </ItemGroup>
 

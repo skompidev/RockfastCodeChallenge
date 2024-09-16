@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Rockfast.ViewModels;
+using System.Security.Cryptography;
 
 namespace Rockfast.ServiceInterfaces
 {
-    public interface ITodoService
+    public interface ITodoService : IAppService<TodoVM, int>
     {
+        
     }
 }

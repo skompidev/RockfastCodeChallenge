@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Rockfast.ServiceInterfaces;
 using Rockfast.ViewModels;
+using System.Collections.Generic;
 
 namespace Rockfast.API.Controllers
 {
@@ -18,26 +19,52 @@ namespace Rockfast.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<TodoVM>> Get()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<TodoVM>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<TodoVM>>> Get()
         {
-            throw new NotImplementedException();
+            return Ok(await _todoService.Get());
+        }
+
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<TodoVM>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IEnumerable<TodoVM>>> GetById(int id)
+        {
+            return Ok(await _todoService.GetById(id));
         }
 
         [HttpPost]
-        public async Task<TodoVM> Post(TodoVM model)
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(IEnumerable<TodoVM>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<TodoVM>> Post(TodoVM model)
         {
-            throw new NotImplementedException();
+            var todo = await _todoService.Post(model);
+
+            return Created($"/todos/{todo.Id}", todo);
         }
 
         [HttpPut]
-        public async Task<TodoVM> Put(TodoVM model)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<TodoVM>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<TodoVM>> Put(TodoVM model)
         {
-            throw new NotImplementedException();
+            var todo = await _todoService.Put(model);
+
+            return Ok(todo);
         }
+
         [HttpDelete]
-        public async Task Delete(int id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> Delete(int id)
         {
-            throw new NotImplementedException();
+            await _todoService.Delete(id);
+
+            return Ok();
         }
     }
 }

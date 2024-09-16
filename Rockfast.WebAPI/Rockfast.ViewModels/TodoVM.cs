@@ -1,7 +1,4 @@
 ﻿namespace Rockfast.ViewModels
 {
-    public class TodoVM
-    {
-
-    }
+    public record TodoVM(int Id, string Name, DateTime? DateCompleted);
 }
