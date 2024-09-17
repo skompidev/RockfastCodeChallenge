@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Rockfast.ServiceInterfaces;
 using Rockfast.ViewModels;
-using System.Collections.Generic;
 
 namespace Rockfast.API.Controllers
 {

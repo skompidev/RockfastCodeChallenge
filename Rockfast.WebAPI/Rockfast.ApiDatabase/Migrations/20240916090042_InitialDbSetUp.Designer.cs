@@ -12,8 +12,8 @@ using Rockfast.ApiDatabase;
 namespace Rockfast.ApiDatabase.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20240916132545_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240917030042_InitialDbSetUp")]
+    partial class InitialDbSetUp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,7 +43,8 @@ namespace Rockfast.ApiDatabase.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
