@@ -10,21 +10,27 @@ namespace Rockfast.ApiDatabase.Extensions
             return base.SavingChanges(eventData, result);
         }
 
+        public override ValueTask<InterceptionResult<int>> SavingChangesAsync(DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
+        {
+            UpdateAuditData(eventData.Context);
+            return base.SavingChangesAsync(eventData, result, cancellationToken);
+        }
+
         private void UpdateAuditData(DbContext? context)
         {
             if (context == null)
                 return;
 
-            foreach (var item in context.ChangeTracker.Entries<IEntity>())
+            foreach (var entity in context.ChangeTracker.Entries<IEntity>())
             {
-                if (item.State == EntityState.Added)
+                if (entity.State == EntityState.Added)
                 {
-                    item.Entity.DateCreated = DateTime.UtcNow;
+                    entity.Entity.DateCreated = DateTime.UtcNow;
                 }
 
-                if (item.State == EntityState.Added || item.State == EntityState.Modified)
+                if (entity.State == EntityState.Added || entity.State == EntityState.Modified)
                 {
-                    item.Entity.DateUpdated = DateTime.UtcNow;
+                    entity.Entity.DateUpdated = DateTime.UtcNow;
                 }
             }
         }

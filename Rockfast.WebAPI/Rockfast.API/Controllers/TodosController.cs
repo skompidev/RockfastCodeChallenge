@@ -4,7 +4,7 @@ using Rockfast.ViewModels;
 
 namespace Rockfast.API.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class TodosController : ControllerBase
     {

@@ -1,0 +1,8 @@
+<rf-app-header></rf-app-header>
+<div class="home">
+  <rf-app-users
+    [users]="users$"
+    (userSelected)="onUserSelected($event)"
+  ></rf-app-users>
+</div>
+<rf-app-footer></rf-app-footer>

@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Rockfast.ViewModels\Rockfast.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>
