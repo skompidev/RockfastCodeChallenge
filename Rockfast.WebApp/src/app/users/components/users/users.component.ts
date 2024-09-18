@@ -14,7 +14,6 @@ export class UsersComponent {
 
   selectedUserId: string = '';
 
-
   onUserClick(user: IUser) {
     this.selectedUserId = user.id;
     this.userSelected.emit(user);

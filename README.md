@@ -1,5 +1,9 @@
 # CodeChallenge
 
+# To run the API project: Set Rockfast.API as a start up project and press F5
+
+# To run the Angular project. Open the Rockfast.WebApp folder in VS Code. 1. open terminal and enter command: npm install 2. Once installation complete, enter command: npm start 3. Once success, open browser and with url http://localhost:4200/
+
 # UI
 
 # Form container is been updated to dialog box for ToDo operations
@@ -16,8 +20,8 @@
 
 # Need to add unit test cases for API services
 
-# Improved logging
+# To Improve logging
 
-# Improved validations on models.
+# To Improve validations on models.
 
-# Code cleanup
+# Need some code cleanup
