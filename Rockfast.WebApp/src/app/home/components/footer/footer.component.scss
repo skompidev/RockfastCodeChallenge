@@ -1,7 +1,9 @@
+@import "../../../../stylings/_variables.scss";
+
 .footer {
     display: flex;
     width: 100vw;
     height: 5vh;
-    background-color: cadetblue;
+    background-color: $footer-color;
     bottom: 0;
 }

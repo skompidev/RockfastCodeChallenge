@@ -1,22 +1,30 @@
+@import "../../../../stylings/_variables.scss";
+
 .users-container{
     display: flex;
     flex-direction: column;
-    min-width: 30vw;
+    min-width: 45vw;
     max-height: 60vh;
-    border: 5px solid cornflowerblue;
-    border-radius: 16px;    
+    border: 5px solid $container-border;
+    border-radius: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+    .users-container {
+        min-width: 90vw;
+    }
 }
 
 .list-header {
     display: flex;
     height: 50px;
     width: 100%;
-    border: 5px solid lightblue;
-    border-radius: 8px;
+    background-color: $container-header;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: blueviolet;
+    color: $font-color;
+    margin-bottom: 5px;
 }
 
 .list-header h3 {
@@ -25,18 +33,20 @@
 
 .user-item {
     display: flex;
-    border: 3px solid teal;
-    background-color: teal;
+    background-color: $user-item-bg;
     min-height: 40px;
     margin: 5px;
     padding: 5px;
     border-radius: 8px;
     justify-content: center;
     cursor: pointer;
-    color: wheat;
+    color: $font-color;
 }
 
-.user-item:nth-of-type(even) {
-    border: 3px solid tomato;
-    background-color: tomato;
+.user-item:hover {
+    color: $item-focus-font-color;
+}
+
+.user-item.active {
+    background-color: $user-item-active-bg;
 }

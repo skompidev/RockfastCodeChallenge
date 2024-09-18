@@ -3,6 +3,12 @@
     <h3>Users</h3>
   </div>
   @for (user of users | async; track $index) {
-  <div class="user-item" (click)="onUserClick(user)">{{ user.name }}</div>
+  <div
+    class="user-item"
+    [class.active]="selectedUser?.id === user.id"
+    (click)="onUserClick(user)"
+  >
+    {{ user.name }}
+  </div>
   }
 </div>

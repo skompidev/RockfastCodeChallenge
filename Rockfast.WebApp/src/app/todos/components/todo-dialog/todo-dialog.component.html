@@ -32,10 +32,15 @@
       <mat-option [value]="user.id">{{ user.name }}</mat-option>
       }
     </mat-select>
+    @if (errors.name) {
+    <mat-error>{{ errors.userId }}</mat-error>
+    }
   </mat-form-field>
 </mat-dialog-content>
 
 <div class="todo-actions">
-  <button class="action-btn" (click)="clearOrDelete()">{{ buttonText }}</button>
+  <button class="action-btn clear" (click)="clearOrDelete()">
+    {{ buttonText }}
+  </button>
   <button class="action-btn" (click)="save()">Save</button>
 </div>

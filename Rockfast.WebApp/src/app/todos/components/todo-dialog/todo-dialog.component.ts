@@ -30,7 +30,7 @@ export class TodoDialogComponent implements OnInit {
       name: [this.todoData?.name, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       isComplete: [this.todoData?.dateCompleted ? true : false],
       dateCompleted: [this.todoData?.dateCompleted ?? new Date()],
-      userId: [this.todoData?.userId]
+      userId: [this.todoData?.userId, [Validators.required]]
     });
   }
 
@@ -52,8 +52,7 @@ export class TodoDialogComponent implements OnInit {
         });
         this.errors[key] = errorStr;
       }
-    }); 
-    return true;
+    });
   }
 
   save() {

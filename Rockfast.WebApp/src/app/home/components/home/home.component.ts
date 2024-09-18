@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, viewChild } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
-import { filter, find, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IUser } from '../../../users/models/user';
 import { ITodo } from '../../../todos/models/todo.model';
 import { TodoService } from '../../../core/services/todo.service';

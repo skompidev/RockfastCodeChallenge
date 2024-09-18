@@ -8,11 +8,15 @@ import { IUser } from '../../models/user';
   styleUrl: './users.component.scss'
 })
 export class UsersComponent {
+
   @Input() users: Observable<IUser[]> | undefined;
   @Output() userSelected: EventEmitter<IUser> = new EventEmitter<IUser>();
 
+  selectedUser!: IUser;
+
 
   onUserClick(user: IUser) {
+    this.selectedUser = user;
     this.userSelected.emit(user);
   }
 }

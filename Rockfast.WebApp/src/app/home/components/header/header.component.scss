@@ -1,6 +1,8 @@
+@import "../../../../stylings/_variables.scss";
+
 .header {
     display: flex;    
     width: 100vw;
     height: 5vh;
-    background-color: cadetblue;
+    background-color: $header-color;
 }

@@ -1,6 +1,8 @@
+@import "../../../../stylings/_variables.scss";
+
 .todo-dialog {
     color: white;
-    background-color: burlywood;
+    background-color: $dialog-bg;
     display: flex;
     flex-direction: column;
     max-width: 80vw;
@@ -12,7 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: burlywood;
+    background-color: $dialog-bg;
 }
 
 .todo-complete {
@@ -47,4 +49,8 @@
 
 .action-btn:focus {
     outline: 0;
+}
+
+.action-btn.clear {
+    background-color: $dialog-btn-clear;
 }
