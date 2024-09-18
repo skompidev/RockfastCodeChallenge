@@ -3,14 +3,12 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Rockfast.ApiDatabase;
 using Rockfast.ApiDatabase.Extensions;
 using Rockfast.Dependencies;
-using Rockfast.Infrastructure.Exceptions;
 using Rockfast.Infrastructure.Filters;
 using Rockfast.ServiceInterfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddExceptionHandler<ExceptionFilter>();
 builder.Services.AddScoped<ITodoService, TodoService>();
 builder.Services.AddScoped<IUserService, UserSerivice>();
 builder.Services.AddScoped<ISaveChangesInterceptor, AuditingInerceptor>();

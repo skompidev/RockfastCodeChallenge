@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Rockfast.Infrastructure.Exceptions;
 using Rockfast.ServiceInterfaces;
 using Rockfast.ViewModels;
 
@@ -25,8 +26,15 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<TodoVM>>> Get()
         {
-            this._logger.LogInformation($"Processing Todo {nameof(Get)} request");
-            return Ok(await _todoService.Get());
+            try
+            {
+                this._logger.LogInformation($"Processing Todo {nameof(Get)} request");
+                return Ok(await _todoService.Get());
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }            
         }
 
         /// <summary>
@@ -40,8 +48,15 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<TodoVM>>> GetById(int id)
         {
-            this._logger.LogInformation($"Processing Todo {nameof(GetById)} request for {id}");
-            return Ok(await _todoService.GetById(id));
+            try
+            {
+                this._logger.LogInformation($"Processing Todo {nameof(GetById)} request for {id}");
+                return Ok(await _todoService.GetById(id));
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }            
         }
 
         /// <summary>
@@ -54,13 +69,20 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<TodoVM>> Post(TodoVM model)
         {
-            this._logger.LogInformation($"Processing Todo {nameof(Post)} request for {model}");
+            try
+            {
+                this._logger.LogInformation($"Processing Todo {nameof(Post)} request for {model}");
 
-            var todo = await _todoService.Post(model);
+                var todo = await _todoService.Post(model);
 
-            this._logger.LogInformation($"Completed Todo {nameof(Post)} request for {todo}");
+                this._logger.LogInformation($"Completed Todo {nameof(Post)} request for {todo}");
 
-            return Created($"/todos/{todo.Id}", todo);
+                return Created($"/todos/{todo.Id}", todo);
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }            
         }
 
         /// <summary>
@@ -74,13 +96,20 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<TodoVM>> Put(TodoVM model)
         {
-            this._logger.LogInformation($"Processing Todo {nameof(Put)} request for {model}");
+            try
+            {
+                this._logger.LogInformation($"Processing Todo {nameof(Put)} request for {model}");
 
-            var todo = await _todoService.Put(model);
+                var todo = await _todoService.Put(model);
 
-            this._logger.LogInformation($"Completed Todo {nameof(Put)} request for {model}");
+                this._logger.LogInformation($"Completed Todo {nameof(Put)} request for {model}");
 
-            return Ok(todo);
+                return Ok(todo);
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }            
         }
 
         /// <summary>
@@ -94,11 +123,18 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Delete(int id)
         {
-            this._logger.LogInformation($"Processing Todo {nameof(Delete)} request for {id}");
+            try
+            {
+                this._logger.LogInformation($"Processing Todo {nameof(Delete)} request for {id}");
 
-            await _todoService.Delete(id);
+                await _todoService.Delete(id);
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }            
         }
 
         /// <summary>
@@ -112,9 +148,16 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<TodoVM>>> GetByUserId(Guid userId)
         {
-            this._logger.LogInformation($"Processing Todo {nameof(GetByUserId)} request for {userId}");
+            try
+            {
+                this._logger.LogInformation($"Processing Todo {nameof(GetByUserId)} request for {userId}");
 
-            return Ok(await _todoService.GetByUserId(userId));
+                return Ok(await _todoService.GetByUserId(userId));
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }           
         }
     }
 }

@@ -24,12 +24,6 @@ namespace Rockfast.Dependencies
             return response;
         }
 
-        public Task<bool> Delete(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-
         public async Task<UserVM> GetById(Guid id)
         {
             var user = await _database.Users.FindAsync(id);
@@ -70,6 +64,22 @@ namespace Rockfast.Dependencies
             await _database.SaveChangesAsync();
 
             return user.Adapt<UserVM>();
+        }
+
+        public async Task<bool> Delete(Guid id)
+        {
+            var user = await _database.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                throw new UserNotFoundException(id);
+            };
+
+            _database.Remove(user);
+
+            await _database.SaveChangesAsync();
+
+            return true;
         }
     }
 }

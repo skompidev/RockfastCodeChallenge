@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Rockfast.Infrastructure.Exceptions;
 using Rockfast.ServiceInterfaces;
 using Rockfast.ViewModels;
 
@@ -25,8 +26,15 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<UserVM>>> Get()
         {
-            this._logger.LogInformation($"Processing User {nameof(Get)} request");
-            return Ok(await _userService.Get());
+            try
+            {
+                this._logger.LogInformation($"Processing User {nameof(Get)} request");
+                return Ok(await _userService.Get());
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }            
         }
 
         /// <summary>
@@ -40,9 +48,16 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<UserVM>>> GetById(Guid id)
         {
-            this._logger.LogInformation($"Processing User {nameof(GetById)} request for {id}");
+            try
+            {
+                this._logger.LogInformation($"Processing User {nameof(GetById)} request for {id}");
 
-            return Ok(await _userService.GetById(id));
+                return Ok(await _userService.GetById(id));
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }            
         }
 
         /// <summary>
@@ -55,13 +70,20 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<UserVM>> Post(UserVM model)
         {
-            this._logger.LogInformation($"Processing User {nameof(Post)} request for {model}");
+            try
+            {
+                this._logger.LogInformation($"Processing User {nameof(Post)} request for {model}");
 
-            var user = await _userService.Post(model);
+                var user = await _userService.Post(model);
 
-            this._logger.LogInformation($"Completed User {nameof(Post)} request for {model}");
+                this._logger.LogInformation($"Completed User {nameof(Post)} request for {model}");
 
-            return Created($"/users/{user.Id}", user);
+                return Created($"/users/{user.Id}", user);
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }            
         }
 
         /// <summary>
@@ -75,13 +97,20 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<UserVM>> Put(UserVM model)
         {
-            this._logger.LogInformation($"Processing User {nameof(Put)} request for {model}");
+            try
+            {
+                this._logger.LogInformation($"Processing User {nameof(Put)} request for {model}");
 
-            var user = await _userService.Put(model);
+                var user = await _userService.Put(model);
 
-            this._logger.LogInformation($"Completed User {nameof(Put)} request for {model}");
+                this._logger.LogInformation($"Completed User {nameof(Put)} request for {model}");
 
-            return Ok(user);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }            
         }
 
         /// <summary>
@@ -95,11 +124,18 @@ namespace Rockfast.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Delete(Guid id)
         {
-            this._logger.LogInformation($"Processing User {nameof(Delete)} request for {id}");
+            try
+            {
+                this._logger.LogInformation($"Processing User {nameof(Delete)} request for {id}");
 
-            await _userService.Delete(id);
+                await _userService.Delete(id);
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw new InternalServerException(ex.Message, ex?.InnerException?.ToString() ?? string.Empty);
+            }            
         }
     }
 }
