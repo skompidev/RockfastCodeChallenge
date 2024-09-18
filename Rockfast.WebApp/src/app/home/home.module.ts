@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { UsersModule } from '../users/users.module';
+import { TodosModule } from '../todos/todos.module';
 
 
 
@@ -15,7 +16,8 @@ import { UsersModule } from '../users/users.module';
   ],
   imports: [
     CommonModule,
-    UsersModule
+    UsersModule,
+    TodosModule
   ]
 })
 export class HomeModule { }

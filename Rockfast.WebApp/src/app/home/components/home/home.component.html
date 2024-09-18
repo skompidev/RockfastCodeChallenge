@@ -1,8 +1,15 @@
 <rf-app-header></rf-app-header>
 <div class="home">
-  <rf-app-users
-    [users]="users$"
-    (userSelected)="onUserSelected($event)"
-  ></rf-app-users>
+  <div class="user-todos-container">
+    <rf-app-users
+      [users]="users$"
+      (userSelected)="onUserSelected($event)"
+    ></rf-app-users>
+    <rf-app-todos
+      [todos$]="todos$"
+      (todoSelected)="onTodoSelected($event)"
+      (addTodo)="onAddTodo()"
+    ></rf-app-todos>
+  </div>
 </div>
 <rf-app-footer></rf-app-footer>

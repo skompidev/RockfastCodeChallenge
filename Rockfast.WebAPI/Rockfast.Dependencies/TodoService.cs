@@ -1,4 +1,5 @@
-﻿namespace Rockfast.Dependencies
+﻿
+namespace Rockfast.Dependencies
 {
     public class TodoService : ITodoService
     {
@@ -44,13 +45,19 @@
         public async Task<TodoVM> Put(TodoVM model)
         {
             var todo = await _database.Todos.FindAsync(model.Id);
+            var user = _database.Users.AsNoTracking().Any(u => u.Id == model.UserId);
 
             if (todo == null)
             {
                 throw new TodoNotFoundException(model.Id);
             };
+            if (!user)
+            {
+                throw new UserNotFoundException(model.UserId);
+            };
 
             todo.Name = model.Name;
+            todo.UserId = model.UserId;
             todo.DateCompleted = model.DateCompleted;
 
             _database.Update(todo);
@@ -74,6 +81,19 @@
             await _database.SaveChangesAsync();
 
             return true;
-        }        
+        }
+
+        public async Task<IEnumerable<TodoVM>> GetByUserId(Guid userId)
+        {
+            var todos = await _database.Todos
+                            .Where(x => x.UserId == userId)
+                            .AsNoTracking()
+                            .OrderBy(x => x.Id)
+                            .ToListAsync();
+
+            var todosVm = todos.Adapt<IEnumerable<TodoVM>>();
+
+            return todosVm;
+        }
     }
 }

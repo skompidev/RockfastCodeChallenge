@@ -1,0 +1,41 @@
+<mat-dialog-content class="todo-dialog" [formGroup]="form">
+  <mat-form-field>
+    <input matInput placeholder="Todo name" formControlName="name" />
+    @if (errors.name) {
+    <mat-error>{{ errors.name }}</mat-error>
+    }
+  </mat-form-field>
+  <div class="todo-complete">
+    <mat-checkbox
+      class="todo-checkbox"
+      matInput
+      [checked]="form.controls['isComplete'].value"
+      formControlName="isComplete"
+      >Complete</mat-checkbox
+    >
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="dateCompleted"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <mat-form-field>
+    <mat-select formControlName="userId">
+      @let users = todoData.users$ | async; @for (user of users; track user) {
+      <mat-option [value]="user.id">{{ user.name }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<div class="todo-actions">
+  <button class="action-btn" (click)="clearOrDelete()">{{ buttonText }}</button>
+  <button class="action-btn" (click)="save()">Save</button>
+</div>

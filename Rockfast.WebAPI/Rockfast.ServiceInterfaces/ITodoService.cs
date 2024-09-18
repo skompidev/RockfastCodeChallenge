@@ -5,6 +5,6 @@ namespace Rockfast.ServiceInterfaces
 {
     public interface ITodoService : IAppService<TodoVM, int>
     {
-        
+        Task<IEnumerable<TodoVM>> GetByUserId(Guid userId);
     }
 }

@@ -1,1 +1,9 @@
-<p>todos works!</p>
+<div class="todos-container">
+  <div class="list-header">
+    <h3>To Do List</h3>
+    <button class="action-btn" (click)="onAddTodo()">Add Todo</button>
+  </div>
+  @for (todo of todos$ | async; track $index) {
+  <div class="todo-item" (click)="onTodoClick(todo)">{{ todo.name }}</div>
+  }
+</div>

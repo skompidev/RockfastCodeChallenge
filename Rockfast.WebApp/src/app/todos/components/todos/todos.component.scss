@@ -1,0 +1,65 @@
+.todos-container {
+    display: flex;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    min-width: 30vw;
+    max-height: 60vh;
+    border: 5px solid cornflowerblue;
+    border-radius: 16px;    
+}
+
+.list-header {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    border: 5px solid lightblue;
+    border-radius: 8px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: blueviolet;
+}
+
+.list-header h3 {
+    margin: 0;
+}
+
+.todo-item {
+    display: flex;
+    border: 3px solid teal;
+    background-color: teal;
+    min-height: 40px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    justify-content: center;
+    cursor: pointer;
+    color: wheat;
+}
+
+.todo-item:nth-of-type(even) {
+    border: 3px solid tomato;
+    background-color: tomato;
+}
+
+.action-btn {
+    background-color: teal;
+    height: 40px;
+    width: 80px;
+    color: white;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.action-btn:active {
+    transform: scale(0.98);
+}
+
+.action-btn:focus {
+    outline: 0;
+}

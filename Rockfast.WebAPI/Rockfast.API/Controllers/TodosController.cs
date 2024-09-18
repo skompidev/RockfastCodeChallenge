@@ -64,5 +64,14 @@ namespace Rockfast.API.Controllers
 
             return Ok();
         }
+
+        [HttpGet("user/{userId:guid}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<TodoVM>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IEnumerable<TodoVM>>> GetByUserId(Guid userId)
+        {
+            return Ok(await _todoService.GetByUserId(userId));
+        }
     }
 }

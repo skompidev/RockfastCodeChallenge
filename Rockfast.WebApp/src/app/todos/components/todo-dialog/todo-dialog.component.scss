@@ -1,0 +1,50 @@
+.todo-dialog {
+    color: white;
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    max-width: 80vw;
+    min-width: 350px;
+}
+
+.todo-actions {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: burlywood;
+}
+
+.todo-complete {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.todo-checkbox {    
+    padding: 5px;
+    transform: translateY(-8px);
+}
+
+.action-btn {
+    background-color: teal;
+    height: 40px;
+    width: 80px;
+    color: white;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.action-btn:active {
+    transform: scale(0.98);
+}
+
+.action-btn:focus {
+    outline: 0;
+}
