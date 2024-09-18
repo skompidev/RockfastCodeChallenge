@@ -49,7 +49,11 @@
 }
 
 .todo-item.active {
-    background-color: $user-item-active-bg;
+    background-color: $todo-item-active-bg;
+}
+
+.todo-item.complete {
+    background-color: $todo-item-bg-complete;
 }
 
 .action-btn { 

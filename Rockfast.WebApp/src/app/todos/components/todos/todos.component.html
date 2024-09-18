@@ -4,7 +4,11 @@
     <button class="action-btn" (click)="onAddTodo()">Add Todo</button>
   </div>
   @for (todo of todos$ | async; track $index) {
-  <div class="todo-item" (click)="onTodoClick(todo)">
+  <div
+    class="todo-item"
+    [class.complete]="todo.dateCompleted ? true : false"
+    (click)="onTodoClick(todo)"
+  >
     {{ todo.name }}
   </div>
   }
