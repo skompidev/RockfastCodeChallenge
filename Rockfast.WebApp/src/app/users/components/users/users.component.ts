@@ -12,11 +12,11 @@ export class UsersComponent {
   @Input() users: Observable<IUser[]> | undefined;
   @Output() userSelected: EventEmitter<IUser> = new EventEmitter<IUser>();
 
-  selectedUser!: IUser;
+  selectedUserId: string = '';
 
 
   onUserClick(user: IUser) {
-    this.selectedUser = user;
+    this.selectedUserId = user.id;
     this.userSelected.emit(user);
   }
 }
