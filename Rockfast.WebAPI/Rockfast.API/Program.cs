@@ -42,7 +42,7 @@ if (app.Environment.IsDevelopment())
     app.UseCors();
     app.UseSwagger();
     app.UseSwaggerUI();
-    //await app.InitialiseDbSeedAsync();
+    await app.InitialiseDbSeedAsync();
 }
 
 app.UseAuthorization();
