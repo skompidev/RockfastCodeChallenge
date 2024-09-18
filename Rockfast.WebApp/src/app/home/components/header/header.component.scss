@@ -2,7 +2,12 @@
 
 .header {
     display: flex;    
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
     width: 100vw;
     height: 5vh;
     background-color: $header-color;
+    color: $font-color;
+    font-family: inherit;
 }

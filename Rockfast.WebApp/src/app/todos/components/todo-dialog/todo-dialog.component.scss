@@ -20,6 +20,7 @@
 .todo-complete {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     font-size: 16px;
     font-family: inherit;
@@ -31,7 +32,7 @@
 }
 
 .action-btn {
-    background-color: teal;
+    background-color: $dialog-btn-save;
     height: 40px;
     width: 80px;
     color: white;
