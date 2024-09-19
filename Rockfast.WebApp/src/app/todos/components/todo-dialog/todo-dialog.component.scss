@@ -1,0 +1,57 @@
+@import "../../../../stylings/_variables.scss";
+
+.todo-dialog {
+    color: white;
+    background-color: $dialog-bg;
+    display: flex;
+    flex-direction: column;
+    max-width: 80vw;
+    min-width: 350px;
+}
+
+.todo-actions {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $dialog-bg;
+}
+
+.todo-complete {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.todo-checkbox {    
+    padding: 5px;
+    transform: translateY(-8px);
+}
+
+.action-btn {
+    background-color: $dialog-btn-save;
+    height: 40px;
+    width: 80px;
+    color: white;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.action-btn:active {
+    transform: scale(0.98);
+}
+
+.action-btn:focus {
+    outline: 0;
+}
+
+.action-btn.clear {
+    background-color: $dialog-btn-clear;
+}

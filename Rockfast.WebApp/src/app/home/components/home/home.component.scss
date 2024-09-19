@@ -1,0 +1,20 @@
+@import "../../../../stylings/_variables.scss";
+
+.home {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $home-background-color;
+    height: 90vh;
+    width: 100vw;
+}
+
+.user-todos-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 25px;
+}
